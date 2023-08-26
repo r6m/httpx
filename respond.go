@@ -35,41 +35,41 @@ func handleError(w http.ResponseWriter, r *http.Request, err error) {
 }
 
 // NotFound reponds NotFound error
-func NotFound(w http.ResponseWriter, r *http.Request, msg string) {
-	Respond(w, r, NewError(http.StatusNotFound, msg))
+func NotFound(w http.ResponseWriter, r *http.Request, msg string) error {
+	return Respond(w, r, NewError(http.StatusNotFound, msg))
 }
 
 // BadRequest reponds BadRequest error
-func BadRequest(w http.ResponseWriter, r *http.Request, msg string) {
-	Respond(w, r, NewError(http.StatusBadRequest, msg))
+func BadRequest(w http.ResponseWriter, r *http.Request, msg string) error {
+	return Respond(w, r, NewError(http.StatusBadRequest, msg))
 }
 
 // Unauthorized reponds Unauthorized error
-func Unauthorized(w http.ResponseWriter, r *http.Request, msg string) {
-	Respond(w, r, NewError(http.StatusUnauthorized, msg))
+func Unauthorized(w http.ResponseWriter, r *http.Request, msg string) error {
+	return Respond(w, r, NewError(http.StatusUnauthorized, msg))
 }
 
 // PaymentRequired reponds PaymentRequired error
-func PaymentRequired(w http.ResponseWriter, r *http.Request, msg string) {
-	Respond(w, r, NewError(http.StatusPaymentRequired, msg))
+func PaymentRequired(w http.ResponseWriter, r *http.Request, msg string) error {
+	return Respond(w, r, NewError(http.StatusPaymentRequired, msg))
 }
 
 // TooManyRequests reponds TooManyRequests error
-func TooManyRequests(w http.ResponseWriter, r *http.Request, msg string) {
-	Respond(w, r, NewError(http.StatusTooManyRequests, msg))
+func TooManyRequests(w http.ResponseWriter, r *http.Request, msg string) error {
+	return Respond(w, r, NewError(http.StatusTooManyRequests, msg))
 }
 
 // Conflict reponds Conflict error
-func Conflict(w http.ResponseWriter, r *http.Request, msg string) {
-	Respond(w, r, NewError(http.StatusConflict, msg))
+func Conflict(w http.ResponseWriter, r *http.Request, msg string) error {
+	return Respond(w, r, NewError(http.StatusConflict, msg))
 }
 
 // InternalServer reponds InternalServer error
-func InternalServer(w http.ResponseWriter, r *http.Request, msg string) {
-	Respond(w, r, NewError(http.StatusInternalServerError, msg))
+func InternalServer(w http.ResponseWriter, r *http.Request, msg string) error {
+	return Respond(w, r, NewError(http.StatusInternalServerError, msg))
 }
 
 // NotImplemented reponds NotImplemented error
-func NotImplemented(w http.ResponseWriter, r *http.Request, msg string) {
-	Respond(w, r, NewError(http.StatusNotImplemented, msg))
+func NotImplemented(w http.ResponseWriter, r *http.Request, msg string) error {
+	return Respond(w, r, NewError(http.StatusNotImplemented, msg))
 }
