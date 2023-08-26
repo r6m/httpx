@@ -25,7 +25,7 @@ func GenericHandlerFunc[T any](handler func(w http.ResponseWriter, r *http.Reque
 	return func(w http.ResponseWriter, r *http.Request) {
 		in, err := DecodeTo[T](r)
 		if err != nil {
-			Respond(w, r, NotFoundError("can't decode body").WithInternal(err))
+			Respond(w, r, BadRequestError("can't decode body").WithInternal(err))
 			return
 		}
 
