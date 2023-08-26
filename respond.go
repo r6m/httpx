@@ -8,13 +8,15 @@ import (
 )
 
 // Respond parses error and encodes response based on request content-type
-func Respond(w http.ResponseWriter, r *http.Request, v any) {
+func Respond(w http.ResponseWriter, r *http.Request, v any) error {
 	switch vv := v.(type) {
 	case error:
 		handleError(w, r, vv)
 	default:
 		render.Respond(w, r, vv)
 	}
+
+	return nil
 }
 
 func handleError(w http.ResponseWriter, r *http.Request, err error) {
