@@ -22,7 +22,9 @@ func Respond(w http.ResponseWriter, r *http.Request, v any) error {
 func handleError(w http.ResponseWriter, r *http.Request, err error) {
 	switch e := err.(type) {
 	case *Error:
-		slog.Error(e.Message, "error", e.Internal)
+		if e.Internal != nil {
+			slog.Error(e.Message, "status", e.Status, "error", e.Internal)
+		}
 		w.WriteHeader(e.Status)
 		render.Respond(w, r, e)
 	default:
