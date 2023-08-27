@@ -10,7 +10,7 @@ type Error struct {
 	Internal error  `xml:"-" json:"-"`
 	Status   int    `xml:"status" json:"status"`
 	Code     string `xml:"code" json:"code,omitempty"`
-	Message  any    `xml:"message,omitempty" json:"message,omitempty"`
+	Message  string `xml:"message,omitempty" json:"message,omitempty"`
 	Data     any    `xml:"data,omitempty" json:"data,omitempty"`
 }
 

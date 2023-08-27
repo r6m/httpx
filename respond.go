@@ -1,10 +1,10 @@
 package httpx
 
 import (
+	"log/slog"
 	"net/http"
 
 	"github.com/go-chi/render"
-	"github.com/sirupsen/logrus"
 )
 
 // Respond parses error and encodes response based on request content-type
@@ -22,11 +22,11 @@ func Respond(w http.ResponseWriter, r *http.Request, v any) error {
 func handleError(w http.ResponseWriter, r *http.Request, err error) {
 	switch e := err.(type) {
 	case *Error:
-		logrus.WithField("status", e.Status).WithError(e).Error(e.Message)
+		slog.Error(e.Message, "error", e.Internal)
 		w.WriteHeader(e.Status)
 		render.Respond(w, r, e)
 	default:
-		logrus.WithField("status", http.StatusInternalServerError).WithError(err).Error("internal server error")
+		slog.Error("internel server error", "error", err)
 		render.Respond(w, r, InternalServerError("internal server error"))
 		return
 	}
