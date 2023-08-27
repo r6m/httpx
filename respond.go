@@ -22,11 +22,11 @@ func Respond(w http.ResponseWriter, r *http.Request, v any) error {
 func handleError(w http.ResponseWriter, r *http.Request, err error) {
 	switch e := err.(type) {
 	case *Error:
-		logrus.WithField("status", http.StatusInternalServerError).WithField("internal", e.Internal).WithError(e).Error(e.Message)
+		logrus.WithField("status", e.Status).WithField("err", e.Internal).WithError(e).Error(e.Message)
 		w.WriteHeader(e.Status)
 		render.Respond(w, r, e)
 	default:
-		logrus.WithField("status", "internal").WithError(err).Error("internal server error")
+		logrus.WithField("status", http.StatusInternalServerError).WithError(err).Error("internal server error")
 		render.Respond(w, r, InternalServerError("internal server error"))
 		return
 	}
