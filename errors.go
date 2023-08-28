@@ -8,9 +8,9 @@ import (
 // Error is a http error
 type Error struct {
 	Internal error  `xml:"-" json:"-"`
-	Status   int    `xml:"status" json:"status"`
-	Code     string `xml:"code" json:"code,omitempty"`
-	Message  string `xml:"message,omitempty" json:"message,omitempty"`
+	Status   int    `xml:"status" json:"status" example:"404"`
+	Code     string `xml:"code" json:"code,omitempty" example:"NotFound"`
+	Message  string `xml:"message,omitempty" json:"message,omitempty" example:"user not found"`
 	Data     any    `xml:"data,omitempty" json:"data,omitempty"`
 }
 
